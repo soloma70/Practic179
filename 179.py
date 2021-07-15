@@ -19,16 +19,21 @@ def binary_search(array, element, left, right):
     else:
         return binary_search(array, element, middle + 1, right)
 
+try:
+    array = list(map(int, input('Введите числа через пробел >> ').split()))
+except ValueError:
+    print('Вы ввели НЕ ЧИСЛО')
+    array = list(map(int, input('Повторите внимательно ввод чисел через пробел >> ').split()))
 
-array = list(map(int, input('Введите числа через пробел >> ').split()))
-element = int(input('Введите любое число >> '))
+try:
+    element = int(input('Введите любое число >> '))
+except ValueError:
+    print('Вы ввели НЕ ЧИСЛО')
+    element = int(input('Повторите внимательно ввод любого числа >> '))
 
+array.append(element)
 array_sort = sort_max(array)
 result = binary_search(array_sort, element, 0, len(array_sort))
 
-# print(array_sort)
-if result == False:
-    print('Число отсутствует в списке')
-else:
-    print('Номер позиции элемента слева -', result-1)
-    print('Номер позиции элемента справа -', result+1)
+print('Номер позиции элемента слева -', result-1)
+print('Номер позиции элемента справа -', result+1)
